@@ -1,22 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VRIKRig : MonoBehaviour {
     public VRMap _head;
     public VRMap _leftHand;
     public VRMap _rightHand;
-    
+
     public Transform _headConstraint;
     public Vector3 _headBodyOffset;
+    public float _turnSmoothness;
 
     void Start() {
         _headBodyOffset = transform.position - _headConstraint.position;
     }
 
-    void LateUpdate() {
+    void FixedUpdate() {
         transform.position = _headConstraint.position + _headBodyOffset;
-        transform.forward = Vector3.ProjectOnPlane(_headConstraint.up, Vector3.up).normalized;
+        transform.forward = Vector3.Lerp(
+            transform.forward,
+            Vector3.ProjectOnPlane(_headConstraint.up, Vector3.up).normalized,
+            Time.deltaTime * _turnSmoothness
+        );
 
         _head.Map();
         _leftHand.Map();
@@ -33,6 +36,6 @@ public class VRMap {
 
     public void Map() {
         _rigTarget.position = _vrTarget.TransformPoint(_trackingPositingOffset);
-        _rigTarget.rotation =_vrTarget.rotation * Quaternion.Euler(_trackingRotationOffset);
+        _rigTarget.rotation = _vrTarget.rotation * Quaternion.Euler(_trackingRotationOffset);
     }
 }

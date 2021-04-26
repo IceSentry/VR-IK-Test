@@ -408,8 +408,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369543386}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+  m_Controller: {fileID: 9100000, guid: f9bd09a823bb3af478c1cb30755df50c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -452,6 +452,21 @@ MonoBehaviour:
     _trackingRotationOffset: {x: 135, y: -16, z: 90}
   _headConstraint: {fileID: 1971325805}
   _headBodyOffset: {x: 0, y: 0, z: 0}
+  _turnSmoothness: 1
+--- !u!114 &369543392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369543386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358ba09fade557d4990be5ec48955df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightFootPosWeight: 1
+  leftFootPosWeight: 1
 --- !u!4 &370112550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3019434827382264486, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
